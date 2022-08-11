@@ -11,7 +11,11 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 public class LocalMobileDriver implements WebDriverProvider {
+    private static WebDriver driver;
 
+    public static WebDriver getDriver(){
+        return driver;
+    }
     public static URL getAppiumServerUrl() {
         try {
             return new URL("http://localhost:4723/wd/hub");
@@ -37,7 +41,8 @@ public class LocalMobileDriver implements WebDriverProvider {
         options.setAppPackage("com.ronte.blackcatcard.dev");
         options.setAppActivity("com.ronte.blackcatcard.dev.MainActivity");
 
-        return new AndroidDriver(getAppiumServerUrl(), options);
+        driver = new AndroidDriver(getAppiumServerUrl(), options);
+        return driver;
     }
 
 }
