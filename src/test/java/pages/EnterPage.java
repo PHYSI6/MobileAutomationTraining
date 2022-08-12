@@ -14,7 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class EnterPage {
     private final SelenideElement buttonChangeLanguage =
-            $(AppiumBy.xpath("(//*[@class='android.widget.Button'])[1]"));
+            $(AppiumBy.xpath("(//*[@class='android.widget.Button'])[1]"))
+                    .shouldBe(Condition.enabled, Duration.ofSeconds(AppConfig.DURATION_OF_WAITING));
 
     private final SelenideElement signInButton =
             $(AppiumBy.xpath("(//*[@class='android.widget.Button'])[2]"));
@@ -25,7 +26,8 @@ public class EnterPage {
     private final SelenideElement supportButton =
             $(AppiumBy.xpath("(//*[@class='android.widget.Button'])[4]"));
     private final SelenideElement updateOKButton =
-            $(AppiumBy.xpath("//*[@text='OK']"));
+            $(AppiumBy.xpath("//*[@text='OK']"))
+                    .shouldBe(Condition.enabled, Duration.ofSeconds(AppConfig.DURATION_OF_WAITING));
 
     @Step("Verify that Enter page is open")
     public EnterPage verifyIfWelcomePageIsOpen() {
@@ -36,20 +38,19 @@ public class EnterPage {
 
     @Step("Click button \"OK\"")
     public EnterPage clickOkButton() {
-        updateOKButton.shouldBe(Condition.enabled, Duration.ofSeconds(AppConfig.DURATION_OF_WAITING)).click();
+        updateOKButton.click();
 
         return this;
     }
     @Step("Click button \"Choose your language\"")
     public ChooseLanguagePage clickButtonChangeLanguage() {
-        buttonChangeLanguage.shouldBe(Condition.enabled, Duration.ofSeconds(AppConfig.DURATION_OF_WAITING)).click();
+        buttonChangeLanguage.click();
 
         return new ChooseLanguagePage();
     }
     @Step("Verify that language was changed to Russian")
     public EnterPage verifyIfLanguageChangedToSelected(String changeLanguageText, String signInText, String newCustomerText, String supportText) {
         SoftAssertions softAssertions = new SoftAssertions();
-        buttonChangeLanguage.shouldBe(Condition.enabled, Duration.ofSeconds(AppConfig.DURATION_OF_WAITING));
 
         softAssertions.assertThat(buttonChangeLanguage.getText().trim()).isEqualTo(changeLanguageText);
         softAssertions.assertThat(signInButton.getText().trim()).isEqualTo(signInText);
