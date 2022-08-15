@@ -40,3 +40,6 @@ target/
 .vscode
 /gradlew
 /gradlew.bat
+
+# secret files
+appsettings.json
