@@ -7,9 +7,9 @@ import org.junit.jupiter.params.provider.CsvSource;
 import pages.EnterPage;
 
 @DisplayName("Language tests")
-public class BBCTests extends BaseTest {
+public class LanguageTests extends BaseTest {
     EnterPage welcomePage = new EnterPage();
-    @DisplayName("Change language to Russian test")
+    @DisplayName("Change language test")
     @Owner("Daniil Borisevich")
     @ParameterizedTest
     @CsvSource({

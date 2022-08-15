@@ -40,6 +40,13 @@ public class EnterPage {
 
         return this;
     }
+
+    @Step("Click button \"Sign In\"")
+    public SingInPage clickSigInButton() {
+        signInButton.shouldBe(Condition.enabled, Duration.ofSeconds(Configurator.AppSettings.appConfig.waitTimeout)).click();
+
+        return new SingInPage();
+    }
     @Step("Click button \"Choose your language\"")
     public ChooseLanguagePage clickButtonChangeLanguage() {
         buttonChangeLanguage.shouldBe(Condition.enabled, Duration.ofSeconds(Configurator.AppSettings.appConfig.waitTimeout)).click();

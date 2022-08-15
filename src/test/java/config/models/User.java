@@ -1,6 +1,9 @@
 package config.models;
 
 public class User {
-    public String username;
-    public String password;
+    public String country;
+    public String phoneCode;
+    public String phoneNumber;
+    public String code;
+    public String pin;
 }
