@@ -13,11 +13,10 @@ public class BBCTests extends BaseTest {
     @Owner("Daniil Borisevich")
     @ParameterizedTest
     @CsvSource({
-            /*"Russian, Русский, Вход, Регистрация, Поддержка",
+            "Russian, Русский, Вход, Регистрация, Поддержка",
             "English, English, Sign In, New Customer, Support",
             "German, Deutsch, Einloggen, Anmeldung, Hilfe",
-            "French, Français, Se connecter, Inscription, Soutien",*/
-            "Spanish, Español, Iniciar sesión, Registrar, Soporte"} )
+            "French, Français, Se connecter, Inscription, Soutien"} )
     void searchTest(String language, String changeLanguageText, String sigInText, String newCustomerText, String supportText) {
     welcomePage
             .clickOkButton()
