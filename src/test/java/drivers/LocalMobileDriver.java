@@ -13,8 +13,8 @@ import java.net.URL;
 public class LocalMobileDriver implements WebDriverProvider {
     private static WebDriver driver;
 
-    public static WebDriver getDriver(){
-        return driver;
+    public static AndroidDriver getDriver(){
+        return (AndroidDriver) driver;
     }
     public static URL getAppiumServerUrl() {
         try {
@@ -42,6 +42,7 @@ public class LocalMobileDriver implements WebDriverProvider {
         options.setAppActivity("com.ronte.blackcatcard.dev.MainActivity");
 
         driver = new AndroidDriver(getAppiumServerUrl(), options);
+
         return driver;
     }
 

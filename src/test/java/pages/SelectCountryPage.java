@@ -2,7 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import config.Configurator;
+import config.configurators.JsonConfigurator;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 
@@ -17,7 +17,7 @@ public class SelectCountryPage {
 
     @Step("Click field \"Search\"")
     public SelectCountryPage clickSearchField() {
-        searchField.shouldBe(Condition.enabled, Duration.ofSeconds(Configurator.AppSettings.appConfig.waitTimeout)).click();
+        searchField.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
 
         return this;
     }
@@ -25,14 +25,14 @@ public class SelectCountryPage {
     @Step("Select \"{0}\"")
     public SingInPage selectSearchedCountry(String text ) {
         $(AppiumBy.xpath("//android.view.View[@text='" + text + "']"))
-                .shouldBe(Condition.enabled, Duration.ofSeconds(Configurator.AppSettings.appConfig.waitTimeout)).click();
+                .shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
 
         return new SingInPage();
     }
 
     @Step("Verify that Select Country page is open")
     public SelectCountryPage verifySelectCountryPageIsOpen() {
-        assertTrue(searchField.shouldBe(Condition.enabled, Duration.ofSeconds(Configurator.AppSettings.appConfig.waitTimeout))
+        assertTrue(searchField.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout))
                 .isDisplayed());
 
         return this;

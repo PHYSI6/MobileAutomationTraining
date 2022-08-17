@@ -2,7 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import config.Configurator;
+import config.configurators.JsonConfigurator;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import org.assertj.core.api.SoftAssertions;
@@ -36,27 +36,27 @@ public class EnterPage {
 
     @Step("Click button \"OK\"")
     public EnterPage clickOkButton() {
-        updateOKButton.shouldBe(Condition.enabled, Duration.ofSeconds(Configurator.AppSettings.appConfig.waitTimeout)).click();
+        updateOKButton.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
 
         return this;
     }
 
     @Step("Click button \"Sign In\"")
     public SingInPage clickSigInButton() {
-        signInButton.shouldBe(Condition.enabled, Duration.ofSeconds(Configurator.AppSettings.appConfig.waitTimeout)).click();
+        signInButton.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
 
         return new SingInPage();
     }
     @Step("Click button \"Choose your language\"")
     public ChooseLanguagePage clickButtonChangeLanguage() {
-        buttonChangeLanguage.shouldBe(Condition.enabled, Duration.ofSeconds(Configurator.AppSettings.appConfig.waitTimeout)).click();
+        buttonChangeLanguage.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
 
         return new ChooseLanguagePage();
     }
     @Step("Verify that language was changed to Russian")
     public EnterPage verifyIfLanguageChangedToSelected(String changeLanguageText, String signInText, String newCustomerText, String supportText) {
         SoftAssertions softAssertions = new SoftAssertions();
-        buttonChangeLanguage.shouldBe(Condition.enabled, Duration.ofSeconds(Configurator.AppSettings.appConfig.waitTimeout));
+        buttonChangeLanguage.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout));
 
         softAssertions.assertThat(buttonChangeLanguage.getText().trim()).isEqualTo(changeLanguageText);
         softAssertions.assertThat(signInButton.getText().trim()).isEqualTo(signInText);

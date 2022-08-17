@@ -2,7 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import config.Configurator;
+import config.configurators.JsonConfigurator;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 
@@ -25,23 +25,23 @@ public class SingInPage {
 
     @Step("Click field \"Select Country\"")
     public SelectCountryPage clickSelectCountry() {
-        selectCountry.shouldBe(Condition.enabled, Duration.ofSeconds(Configurator.AppSettings.appConfig.waitTimeout)).click();
+        selectCountry.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
 
         return new SelectCountryPage();
     }
 
     @Step("Click phone number field")
     public SingInPage clickPhoneNumberField() {
-        phoneNumberField.shouldBe(Condition.enabled, Duration.ofSeconds(Configurator.AppSettings.appConfig.waitTimeout)).click();
+        phoneNumberField.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
 
-       return this;
+        return this;
     }
 
     @Step("Click  \"Sign In\" ")
-    public SingInPage clickSignIn() {
-        singInButton.shouldBe(Condition.enabled, Duration.ofSeconds(Configurator.AppSettings.appConfig.waitTimeout)).click();
+    public ConfirmationPage clickSignIn() {
+        singInButton.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
 
-        return this;
+        return new ConfirmationPage();
     }
 
     @Step("Input phone number {0}")
@@ -52,7 +52,7 @@ public class SingInPage {
     }
     @Step("Verify that SignIn page is open")
     public SingInPage verifyIfSignPageIsOpen() {
-        assertTrue(singInButton.shouldBe(Condition.enabled, Duration.ofSeconds(Configurator.AppSettings.appConfig.waitTimeout)).isDisplayed());
+        assertTrue(phoneNumberField.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).isDisplayed());
 
         return this;
     }

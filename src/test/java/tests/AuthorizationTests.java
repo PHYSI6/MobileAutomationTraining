@@ -1,6 +1,6 @@
 package tests;
 
-import config.Configurator;
+import config.configurators.JsonConfigurator;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,12 +22,16 @@ public class AuthorizationTests extends BaseTest{
                 .clickSelectCountry()
                 .verifySelectCountryPageIsOpen()
                 .clickSearchField()
-                .inputTextIntoSearchField(Configurator.AppSettings.user.country)
-                .selectSearchedCountry(Configurator.AppSettings.user.country)
+                .inputTextIntoSearchField(JsonConfigurator.AppSettings.user.country)
+                .selectSearchedCountry(JsonConfigurator.AppSettings.user.country)
                 .verifyIfSignPageIsOpen()
-                .verifyIfPhoneCodeCorrect(Configurator.AppSettings.user.phoneCode)
+                .verifyIfPhoneCodeCorrect(JsonConfigurator.AppSettings.user.phoneCode)
                 .clickPhoneNumberField()
-                .inputPhoneNumber(Configurator.AppSettings.user.phoneNumber)
-                .clickSignIn();
+                .inputPhoneNumber(JsonConfigurator.AppSettings.user.phoneNumber)
+                .clickSignIn()
+                .verifyConfirmationPageIsOpen()
+                .enterOneTimePassword(JsonConfigurator.AppSettings.user.code)
+                .enterPin(JsonConfigurator.AppSettings.user.code)
+                .verifyMoneyPageIsOpen();
     }
 }

@@ -1,17 +1,16 @@
-package config;
+package config.configurators;
 
 import com.google.gson.Gson;
 import config.models.JsonStructure;
 
 import java.io.FileReader;
 
-public class Configurator {
+public class JsonConfigurator {
     public static JsonStructure AppSettings;
 
     static {
         AppSettings = parseAppSettings();
     }
-
     public static JsonStructure parseAppSettings(){
         Gson gson = new Gson();
 
