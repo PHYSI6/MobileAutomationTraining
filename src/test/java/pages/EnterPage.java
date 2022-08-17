@@ -25,7 +25,7 @@ public class EnterPage {
     private final SelenideElement supportButton =
             $(AppiumBy.xpath("(//*[@class='android.widget.Button'])[4]"));
     private final SelenideElement updateOKButton =
-            $(AppiumBy.xpath("//*[@text='OK']"));
+            $(AppiumBy.xpath("(//android.widget.Button)[2]"));
 
     @Step("Verify that Enter page is open")
     public EnterPage verifyIfWelcomePageIsOpen() {

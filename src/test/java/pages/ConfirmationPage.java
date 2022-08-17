@@ -17,11 +17,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ConfirmationPage {
     private final SelenideElement confirmationTitle =
-            $(AppiumBy.xpath("//android.view.View[@text='Confirmation']"));
+            $(AppiumBy.xpath("(//android.view.View[2]/android.view.View)[2]"));
     private final SelenideElement background =
             $(AppiumBy.xpath("//*[@resource-id='background-content']"));
-    private final SelenideElement inputField =
-            $(AppiumBy.xpath("//android.view.View[3]/android.view.View[1]/android.view.View"));
+
 
     @Step("Verify that Confirmation page is open")
     public ConfirmationPage verifyConfirmationPageIsOpen() {
@@ -33,6 +32,7 @@ public class ConfirmationPage {
 
     @Step("Enter one-time password")
     public EnterPinPage enterOneTimePassword(String password) {
+        background.click();
         Map<Character, AndroidKey> mapKeys = Map.of
                        ('0', AndroidKey.DIGIT_0,
                         '1', AndroidKey.DIGIT_1,

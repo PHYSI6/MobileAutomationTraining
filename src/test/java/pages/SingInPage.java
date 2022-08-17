@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SingInPage {
     private final SelenideElement selectCountry =
-            $(AppiumBy.xpath("//android.view.View[@text = 'Select Country']"));
+            $(AppiumBy.xpath("(//android.view.View[2]/android.view.View[1])[5]"));
     private final SelenideElement phoneCode =
             $(AppiumBy.xpath("//*[@resource-id='LoginPage-phoneCodeInput']/android.widget.EditText"));
     private final SelenideElement singInButton =
