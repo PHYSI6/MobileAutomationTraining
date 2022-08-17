@@ -22,6 +22,9 @@ public class SingInPage {
     private final SelenideElement phoneNumberField =
             $(AppiumBy.xpath("//*[@resource-id='LoginPage-phoneTextInput']/android.widget.EditText"));
 
+    private final SelenideElement phoneNumberFieldErrorMessage =
+            $(AppiumBy.xpath("//*[@resource-id='LoginPage-phoneTextInput']/following-sibling::android.widget.TextView"));
+
 
     @Step("Click field \"Select Country\"")
     public SelectCountryPage clickSelectCountry() {
@@ -44,6 +47,13 @@ public class SingInPage {
         return new ConfirmationPage();
     }
 
+    @Step("Click  \"Sign In\" ")
+    public SingInPage clickSignIn(boolean status) {
+        singInButton.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
+
+        return this;
+    }
+
     @Step("Input phone number {0}")
     public SingInPage inputPhoneNumber(String number) {
         phoneNumberField.sendKeys(number);
@@ -60,6 +70,13 @@ public class SingInPage {
     @Step("Verify that phone code is belong to the selected country")
     public SingInPage verifyIfPhoneCodeCorrect(String expectedCode) {
         assertEquals(expectedCode, phoneCode.getText());
+
+        return this;
+    }
+
+    @Step("Verify that phone filed have error message")
+    public SingInPage verifyIfPhoneFieldHaveErrorMessage() {
+        assertTrue(phoneNumberField.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).isDisplayed());
 
         return this;
     }

@@ -16,6 +16,7 @@ public class LanguageTests extends BaseTest {
             "Russian, Русский, Вход, Регистрация, Поддержка",
             "English, English, Sign In, New Customer, Support",
             "German, Deutsch, Einloggen, Anmeldung, Hilfe",
+            "Turkish, Türkçe, Oturum Aç, Yeni Müşteri, Destek",
             "French, Français, Se connecter, Inscription, Soutien"} )
     void searchTest(String language, String changeLanguageText, String sigInText, String newCustomerText, String supportText) {
     welcomePage
