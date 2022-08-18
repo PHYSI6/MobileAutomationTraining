@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import config.configurators.JsonConfigurator;
@@ -15,8 +16,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ConfirmationPage {
     private final SelenideElement confirmationTitle =
             $(AppiumBy.xpath("(//android.view.View[2]/android.view.View)[2]"));
-    private final SelenideElement background =
-            $(AppiumBy.xpath("//*[@resource-id='background-content']"));
+    private final SelenideElement textToClick =
+            $(AppiumBy.xpath("//android.view.View/android.widget.TextView[1]"));
 
     private final SelenideElement pinCodeErrorMessage =
             $(AppiumBy.xpath("(//android.view.View/android.view.View[5])[2]"));
@@ -32,7 +33,7 @@ public class ConfirmationPage {
 
     @Step("Enter one-time password")
     public EnterPinPage enterOneTimePassword(String number) {
-        background.click();
+        textToClick.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
         enterNumber(number);
 
         return new EnterPinPage();
@@ -40,7 +41,7 @@ public class ConfirmationPage {
 
     @Step("Enter one-time password")
     public ConfirmationPage enterOneTimePassword(String number, boolean status) {
-        background.click();
+        textToClick.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
         enterNumber(number);
 
         return this;

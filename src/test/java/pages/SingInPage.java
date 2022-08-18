@@ -76,7 +76,7 @@ public class SingInPage {
 
     @Step("Verify that phone filed have an error message")
     public SingInPage verifyIfPhoneFieldHaveErrorMessage() {
-        assertTrue(phoneNumberField.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).isDisplayed());
+        assertTrue(phoneNumberFieldErrorMessage.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).isDisplayed());
 
         return this;
     }
