@@ -41,7 +41,7 @@ public class AuthorizationTests extends BaseTest{
     @Owner("Daniil Borisevich")
     @ParameterizedTest
     @CsvSource({
-            "1, 1234567890, dddhhhbbbb, $$$$$$$$$$"
+            "1", "1234567890", "dddhhhbbbb", "$$$$$$$$$$"
             } )
     void authorizationWithNonCorrectPhoneNumberTest(String nonCorrectPassword) {
         welcomePage
@@ -59,6 +59,46 @@ public class AuthorizationTests extends BaseTest{
                 .clickPhoneNumberField()
                 .inputPhoneNumber(nonCorrectPassword)
                 .clickSignIn(false)
-                .verifyIfPhoneFieldHaveErrorMessage();
+                .verifyIfPhoneFieldHaveErrorMessage()
+                .verifyIfSignPageIsOpen();
+    }
+
+    @DisplayName("Authorization with empty data test")
+    @Owner("Daniil Borisevich")
+    @Test
+    void authorizationWithEmptyData() {
+        welcomePage
+                .clickOkButton()
+                .verifyIfWelcomePageIsOpen()
+                .clickSigInButton()
+                .verifyIfSignPageIsOpen()
+                .clickSignIn(false)
+                .verifyIfPhoneFieldHaveErrorMessage()
+                .verifyIfSignPageIsOpen();
+    }
+
+    @DisplayName("Authorization with non-correct pin code test")
+    @Owner("Daniil Borisevich")
+    @Test
+    void authorizationWithNonCorrectPinCodeTest() {
+        welcomePage
+                .clickOkButton()
+                .verifyIfWelcomePageIsOpen()
+                .clickSigInButton()
+                .verifyIfSignPageIsOpen()
+                .clickSelectCountry()
+                .verifySelectCountryPageIsOpen()
+                .clickSearchField()
+                .inputTextIntoSearchField(JsonConfigurator.AppSettings.user.country)
+                .selectSearchedCountry(JsonConfigurator.AppSettings.user.country)
+                .verifyIfSignPageIsOpen()
+                .verifyIfPhoneCodeCorrect(JsonConfigurator.AppSettings.user.phoneCode)
+                .clickPhoneNumberField()
+                .inputPhoneNumber(JsonConfigurator.AppSettings.user.phoneNumber)
+                .clickSignIn()
+                .verifyConfirmationPageIsOpen()
+                .enterOneTimePassword("111111", false)
+                .verifyIfPinCodeFieldHaveErrorMessage()
+                .verifyConfirmationPageIsOpen();
     }
 }

@@ -3,16 +3,13 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import config.configurators.JsonConfigurator;
-import drivers.LocalMobileDriver;
 import io.appium.java_client.AppiumBy;
-import io.appium.java_client.android.nativekey.AndroidKey;
-import io.appium.java_client.android.nativekey.KeyEvent;
 import io.qameta.allure.Step;
 
 import java.time.Duration;
-import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.$;
+import static elements.NumberKeyboard.enterNumber;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ConfirmationPage {
@@ -20,6 +17,9 @@ public class ConfirmationPage {
             $(AppiumBy.xpath("(//android.view.View[2]/android.view.View)[2]"));
     private final SelenideElement background =
             $(AppiumBy.xpath("//*[@resource-id='background-content']"));
+
+    private final SelenideElement pinCodeErrorMessage =
+            $(AppiumBy.xpath("(//android.view.View/android.view.View[5])[2]"));
 
 
     @Step("Verify that Confirmation page is open")
@@ -31,27 +31,27 @@ public class ConfirmationPage {
     }
 
     @Step("Enter one-time password")
-    public EnterPinPage enterOneTimePassword(String password) {
+    public EnterPinPage enterOneTimePassword(String number) {
         background.click();
-        Map<Character, AndroidKey> mapKeys = Map.of
-                       ('0', AndroidKey.DIGIT_0,
-                        '1', AndroidKey.DIGIT_1,
-                        '2', AndroidKey.DIGIT_2,
-                        '3', AndroidKey.DIGIT_3,
-                        '4', AndroidKey.DIGIT_4,
-                        '5', AndroidKey.DIGIT_5,
-                        '6', AndroidKey.DIGIT_6,
-                        '7', AndroidKey.DIGIT_7,
-                        '8', AndroidKey.DIGIT_8,
-                        '9', AndroidKey.DIGIT_9
-                );
-
-        for(int i = 0;i < password.length(); i++){
-            if (password.charAt(i) >= '0' && password.charAt(i) <= '9') {
-                LocalMobileDriver.getDriver().pressKey(new KeyEvent(mapKeys.get(password.charAt(i))));
-            }
-        }
+        enterNumber(number);
 
         return new EnterPinPage();
+    }
+
+    @Step("Enter one-time password")
+    public ConfirmationPage enterOneTimePassword(String number, boolean status) {
+        background.click();
+        enterNumber(number);
+
+        return this;
+    }
+
+
+    @Step("Verify that pin code field have an error message")
+    public ConfirmationPage verifyIfPinCodeFieldHaveErrorMessage() {
+        assertTrue(pinCodeErrorMessage.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout))
+                .isDisplayed());
+
+        return this;
     }
 }
