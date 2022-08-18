@@ -48,8 +48,10 @@ public class SingInPage {
     }
 
     @Step("Click  \"Sign In\" ")
-    public SingInPage clickSignIn(boolean status) {
+    public SingInPage clickSignInAndStayOnPage() {
+
         singInButton.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
+
 
         return this;
     }

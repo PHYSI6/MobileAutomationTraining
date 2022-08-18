@@ -1,6 +1,5 @@
 package pages;
 
-import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import config.configurators.JsonConfigurator;
@@ -40,7 +39,7 @@ public class ConfirmationPage {
     }
 
     @Step("Enter one-time password")
-    public ConfirmationPage enterOneTimePassword(String number, boolean status) {
+    public ConfirmationPage enterOneTimePasswordAndStayOnPage(String number) {
         textToClick.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
         enterNumber(number);
 

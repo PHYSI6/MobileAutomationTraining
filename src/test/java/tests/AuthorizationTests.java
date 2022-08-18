@@ -58,7 +58,7 @@ public class AuthorizationTests extends BaseTest{
                 .verifyIfPhoneCodeCorrect(JsonConfigurator.AppSettings.user.phoneCode)
                 .clickPhoneNumberField()
                 .inputPhoneNumber(nonCorrectPassword)
-                .clickSignIn(false)
+                .clickSignInAndStayOnPage()
                 .verifyIfPhoneFieldHaveErrorMessage()
                 .verifyIfSignPageIsOpen();
     }
@@ -72,7 +72,7 @@ public class AuthorizationTests extends BaseTest{
                 .verifyIfWelcomePageIsOpen()
                 .clickSigInButton()
                 .verifyIfSignPageIsOpen()
-                .clickSignIn(false)
+                .clickSignInAndStayOnPage()
                 .verifyIfPhoneFieldHaveErrorMessage()
                 .verifyIfSignPageIsOpen();
     }
@@ -97,7 +97,7 @@ public class AuthorizationTests extends BaseTest{
                 .inputPhoneNumber(JsonConfigurator.AppSettings.user.phoneNumber)
                 .clickSignIn()
                 .verifyConfirmationPageIsOpen()
-                .enterOneTimePassword("111111", false)
+                .enterOneTimePasswordAndStayOnPage("111111")
                 .verifyIfPinCodeFieldHaveErrorMessage()
                 .verifyConfirmationPageIsOpen();
     }
