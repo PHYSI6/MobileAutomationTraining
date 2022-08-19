@@ -1,6 +1,7 @@
-package pages;
+package pages.login;
 
 import io.qameta.allure.Step;
+import pages.apps.MoneyPage;
 
 import static elements.PinCodeKeyboard.enterPinCode;
 

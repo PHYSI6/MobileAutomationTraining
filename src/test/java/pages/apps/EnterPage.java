@@ -1,4 +1,4 @@
-package pages;
+package pages.apps;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -6,6 +6,9 @@ import config.configurators.JsonConfigurator;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import org.assertj.core.api.SoftAssertions;
+import pages.language.ChooseLanguagePage;
+import pages.login.SingInPage;
+import pages.support.SupportPage;
 
 import java.time.Duration;
 

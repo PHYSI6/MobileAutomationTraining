@@ -1,4 +1,4 @@
-package pages;
+package pages.support;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -38,3 +38,4 @@ public class SupportPage {
         return new ChatPage();
     }
 }
+

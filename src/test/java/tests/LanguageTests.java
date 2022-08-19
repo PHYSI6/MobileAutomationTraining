@@ -4,7 +4,7 @@ import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import pages.EnterPage;
+import pages.apps.EnterPage;
 
 @DisplayName("Language tests")
 public class LanguageTests extends BaseTest {

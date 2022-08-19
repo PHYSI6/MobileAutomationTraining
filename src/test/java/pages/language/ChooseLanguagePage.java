@@ -1,4 +1,4 @@
-package pages;
+package pages.language;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -6,6 +6,7 @@ import config.configurators.JsonConfigurator;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import pages.apps.EnterPage;
 
 import java.time.Duration;
 

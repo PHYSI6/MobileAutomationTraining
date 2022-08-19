@@ -3,7 +3,7 @@ package tests;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pages.EnterPage;
+import pages.apps.EnterPage;
 
 @DisplayName("Support tests")
 public class SupportTests extends BaseTest{

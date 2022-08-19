@@ -1,10 +1,11 @@
-package pages;
+package pages.login;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import config.configurators.JsonConfigurator;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
+import pages.language.SelectCountryPage;
 
 import java.time.Duration;
 
