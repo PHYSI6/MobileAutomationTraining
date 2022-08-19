@@ -11,12 +11,12 @@ import pages.EnterPage;
 @DisplayName("Authorization tests")
 public class AuthorizationTests extends BaseTest{
 
-    EnterPage welcomePage = new EnterPage();
+    EnterPage enterPage = new EnterPage();
     @DisplayName("Authorization with correct data test")
     @Owner("Daniil Borisevich")
     @Test
     void authorizationWithCorrectDataTest() {
-        welcomePage
+        enterPage
                 .clickOkButton()
                 .verifyIfWelcomePageIsOpen()
                 .clickSigInButton()
@@ -44,7 +44,7 @@ public class AuthorizationTests extends BaseTest{
             "1", "1234567890", "dddhhhbbbb", "$$$$$$$$$$"
             } )
     void authorizationWithNonCorrectPhoneNumberTest(String nonCorrectPassword) {
-        welcomePage
+        enterPage
                 .clickOkButton()
                 .verifyIfWelcomePageIsOpen()
                 .clickSigInButton()
@@ -67,7 +67,7 @@ public class AuthorizationTests extends BaseTest{
     @Owner("Daniil Borisevich")
     @Test
     void authorizationWithEmptyData() {
-        welcomePage
+        enterPage
                 .clickOkButton()
                 .verifyIfWelcomePageIsOpen()
                 .clickSigInButton()
@@ -81,7 +81,7 @@ public class AuthorizationTests extends BaseTest{
     @Owner("Daniil Borisevich")
     @Test
     void authorizationWithNonCorrectPinCodeTest() {
-        welcomePage
+        enterPage
                 .clickOkButton()
                 .verifyIfWelcomePageIsOpen()
                 .clickSigInButton()

@@ -8,8 +8,8 @@ import pages.EnterPage;
 
 @DisplayName("Language tests")
 public class LanguageTests extends BaseTest {
-    EnterPage welcomePage = new EnterPage();
-    @DisplayName("Change language test")
+    EnterPage enterPage = new EnterPage();
+    @DisplayName("Change language in Enter page test")
     @Owner("Daniil Borisevich")
     @ParameterizedTest
     @CsvSource({
@@ -18,8 +18,8 @@ public class LanguageTests extends BaseTest {
             "German, Deutsch, Einloggen, Anmeldung, Hilfe",
             "Turkish, Türkçe, Oturum Aç, Yeni Müşteri, Destek",
             "French, Français, Se connecter, Inscription, Soutien"} )
-    void searchTest(String language, String changeLanguageText, String sigInText, String newCustomerText, String supportText) {
-    welcomePage
+    void languageInEnterPageTest(String language, String changeLanguageText, String sigInText, String newCustomerText, String supportText) {
+    enterPage
             .clickOkButton()
             .verifyIfWelcomePageIsOpen()
             .clickButtonChangeLanguage()
