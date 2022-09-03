@@ -15,12 +15,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ChooseLanguagePage {
     private final SelenideElement doneButton =
-            $(AppiumBy.xpath("(//*[@class='android.widget.Button'])[last()]"))
-                    .shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout));
+            $(AppiumBy.xpath("(//*[@class='android.widget.Button'])[last()]"));
 
     @Step("Verify that Choose Language page is open")
     public ChooseLanguagePage verifyIfChooseLanguagePageIsOpen(){
-        assertTrue(doneButton.isDisplayed());
+        assertTrue(doneButton.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).isDisplayed());
 
         return this;
     }
@@ -29,13 +28,13 @@ public class ChooseLanguagePage {
     public ChooseLanguagePage selectLanguage(String language){
         SelenideElement elem = $(By.xpath("//android.widget.RadioButton[contains(@text,'" +  language + "')]"));
 
-        elem.click();
+        elem.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
         return this;
     }
 
     @Step("Click \"Done\"")
     public EnterPage clickDoneButton(){
-        doneButton.click();
+        doneButton.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
 
         return new EnterPage();
     }

@@ -41,7 +41,7 @@ public class SelectCountryPage {
 
     @Step("Input text  {0} into field \"Search\"")
     public SelectCountryPage inputTextIntoSearchField(String text) {
-        searchField.sendKeys(text);
+        searchField.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).sendKeys(text);
 
         return this;
     }

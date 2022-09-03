@@ -32,7 +32,8 @@ public class EnterPage {
 
     @Step("Verify that Enter page is open")
     public EnterPage verifyIfWelcomePageIsOpen() {
-        assertTrue(buttonChangeLanguage.isDisplayed());
+        assertTrue(buttonChangeLanguage.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout))
+                .isDisplayed());
 
         return this;
     }

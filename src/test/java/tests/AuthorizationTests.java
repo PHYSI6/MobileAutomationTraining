@@ -10,7 +10,6 @@ import pages.apps.EnterPage;
 
 @DisplayName("Authorization tests")
 public class AuthorizationTests extends BaseTest{
-
     EnterPage enterPage = new EnterPage();
     @DisplayName("Authorization with correct data test")
     @Owner("Daniil Borisevich")
