@@ -1,16 +1,21 @@
 package pages.language;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import config.configurators.JsonConfigurator;
+import drivers.LocalMobileDriver;
 import io.appium.java_client.AppiumBy;
+import io.appium.java_client.MobileBy;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import pages.apps.EnterPage;
 
 import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.$;
+import static elements.Scroll.horizontalScrollToElement;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ChooseLanguagePage {
@@ -26,9 +31,11 @@ public class ChooseLanguagePage {
 
     @Step("Select \"{0}\" language")
     public ChooseLanguagePage selectLanguage(String language){
-        SelenideElement elem = $(By.xpath("//android.widget.RadioButton[contains(@text,'" +  language + "')]"));
+        horizontalScrollToElement(language, LocalMobileDriver.getDriver());
 
+        SelenideElement elem = $(By.xpath("//android.widget.RadioButton[contains(@text,'" +  language + "')]"));
         elem.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
+
         return this;
     }
 

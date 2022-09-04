@@ -17,7 +17,9 @@ public class LanguageTests extends BaseTest {
             "English, English, Sign In, New Customer, Support",
             "German, Deutsch, Einloggen, Anmeldung, Hilfe",
             "Turkish, Türkçe, Oturum Aç, Yeni Müşteri, Destek",
-            "French, Français, Se connecter, Inscription, Soutien"} )
+            "French, Français, Se connecter, Inscription, Soutien",
+            "Italian, Italiano, Accedi, Registrazione, Supporto",
+            "Chinese, 中文 , 登录, 新客户, 拥护"} )
     void languageInEnterPageTest(String language, String changeLanguageText, String sigInText, String newCustomerText, String supportText) {
     enterPage
             .clickOkButton()
