@@ -52,6 +52,13 @@ public class EnterPage {
         return new SupportPage();
     }
 
+    @Step("Click button \"New Customer\"")
+    public NewCustomerPage clickNewCustomerButton() {
+        newCustomerButton.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
+
+        return new NewCustomerPage();
+    }
+
     @Step("Click button \"Sign In\"")
     public SingInPage clickSigInButton() {
         signInButton.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();

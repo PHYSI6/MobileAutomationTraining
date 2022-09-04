@@ -12,7 +12,7 @@ public class SupportTests extends BaseTest{
     @DisplayName("Support FAQ test")
     @Owner("Daniil Borisevich")
     @Test
-    void checkSupportFAQ() {
+    void supportFAQTest() {
         enterPage
                 .clickOkButton()
                 .verifyIfWelcomePageIsOpen()
@@ -22,10 +22,23 @@ public class SupportTests extends BaseTest{
                 .verifyIfFAQPageIsOpen();
     }
 
+    @DisplayName("New Customer test")
+    @Owner("Daniil Borisevich")
+    @Test
+    void newCustomerTest() {
+        enterPage
+                .clickOkButton()
+                .verifyIfWelcomePageIsOpen()
+                .clickNewCustomerButton()
+                .verifyIfNewCustomerPageIsOpen()
+                .verifyIfTextOfPageIsCorrect();
+    }
+
+
     @DisplayName("Support Chat test")
     @Owner("Daniil Borisevich")
     @Test
-    void checkSupportChat() {
+    void supportChatTest() {
         enterPage
                 .clickOkButton()
                 .verifyIfWelcomePageIsOpen()
