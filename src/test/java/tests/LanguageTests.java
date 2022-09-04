@@ -13,19 +13,21 @@ public class LanguageTests extends BaseTest {
     @Owner("Daniil Borisevich")
     @ParameterizedTest
     @CsvSource({
-            "Russian, Русский, Вход, Регистрация, Поддержка",
-            "English, English, Sign In, New Customer, Support",
-            "German, Deutsch, Einloggen, Anmeldung, Hilfe",
-            "Turkish, Türkçe, Oturum Aç, Yeni Müşteri, Destek",
-            "French, Français, Se connecter, Inscription, Soutien",
-            "Italian, Italiano, Accedi, Registrazione, Supporto",
-            "Chinese, 中文 , 登录, 新客户, 拥护"} )
-    void languageInEnterPageTest(String language, String changeLanguageText, String sigInText, String newCustomerText, String supportText) {
+            "Russian, Russian, Русский, Вход, Регистрация, Поддержка",
+            "English, English, English, Sign In, New Customer, Support",
+            "German, German, Deutsch, Einloggen, Anmeldung, Hilfe",
+            "Turkish, Turkish, Türkçe, Oturum Aç, Yeni Müşteri, Destek",
+            "French, French, Français, Se connecter, Inscription, Soutien",
+            "Italian, Italian, Italiano, Accedi, Registrazione, Supporto",
+            "Chinese, Chinese, 中文 , 登录, 新客户, 拥护",
+            "Italian, Spanish, Español, Iniciar sesión, Registrar, Soporte"} )
+    void languageInEnterPageTest(String languageToScroll,String language, String changeLanguageText, String sigInText, String newCustomerText, String supportText) {
     enterPage
             .clickOkButton()
             .verifyIfWelcomePageIsOpen()
             .clickButtonChangeLanguage()
             .verifyIfChooseLanguagePageIsOpen()
+            .scrollToLanguage(languageToScroll)
             .selectLanguage(language)
             .clickDoneButton()
             .verifyIfWelcomePageIsOpen()

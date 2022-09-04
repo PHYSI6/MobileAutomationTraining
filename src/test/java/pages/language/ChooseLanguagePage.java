@@ -29,11 +29,17 @@ public class ChooseLanguagePage {
         return this;
     }
 
-    @Step("Select \"{0}\" language")
-    public ChooseLanguagePage selectLanguage(String language){
+    @Step("Scroll to \"{0}\" language")
+    public ChooseLanguagePage scrollToLanguage(String language){
         horizontalScrollToElement(language, LocalMobileDriver.getDriver());
 
+        return this;
+    }
+
+    @Step("Select \"{0}\" language")
+    public ChooseLanguagePage selectLanguage(String language){
         SelenideElement elem = $(By.xpath("//android.widget.RadioButton[contains(@text,'" +  language + "')]"));
+
         elem.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
 
         return this;
