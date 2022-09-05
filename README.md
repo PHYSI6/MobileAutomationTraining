@@ -1,1 +1,1 @@
-# BBCTraining
+# Mobile Automation Training
