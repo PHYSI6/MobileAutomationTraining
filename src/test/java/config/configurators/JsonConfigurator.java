@@ -11,6 +11,7 @@ public class JsonConfigurator {
     static {
         AppSettings = parseAppSettings();
     }
+
     public static JsonStructure parseAppSettings(){
         Gson gson = new Gson();
 
@@ -22,6 +23,4 @@ public class JsonConfigurator {
         }
         return null;
     }
-
-
 }
