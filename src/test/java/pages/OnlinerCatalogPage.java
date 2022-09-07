@@ -4,12 +4,10 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import config.configurators.JsonConfigurator;
 import io.qameta.allure.Step;
-import org.openqa.selenium.WebElement;
 
 import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.switchTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OnlinerCatalogPage extends BasePage{

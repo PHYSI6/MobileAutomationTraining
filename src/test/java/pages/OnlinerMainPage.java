@@ -26,7 +26,6 @@ public class OnlinerMainPage extends BasePage {
     private final SelenideElement newsLayer = $(".b-news-layer");
     private final SelenideElement burgerMenu = $(".header-style__underlay");
     private final SelenideElement catalog = $(By.xpath("(//span[@class='header-style__sign'])[2]"));
-    private final String END_POINT = "/";
 
     @Step("Open page main page url:")
     public OnlinerMainPage open(){
