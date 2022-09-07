@@ -10,11 +10,11 @@ import org.openqa.selenium.By;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.switchTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class OnlinerMainPage extends BasePage {
     private final SelenideElement searchField = $(By.className("fast-search__input"));
@@ -23,11 +23,12 @@ public class OnlinerMainPage extends BasePage {
     private final SelenideElement firstProductTitle = $(".product__title > a");
     private final SelenideElement cartIcon = $("#cart-mobile");
     private final SelenideElement vkLink = $(".footer-style__social-button_vk");
-    private final SelenideElement newsLayer = $(".b-news-layer");
-    private final SelenideElement burgerMenu = $(".header-style__underlay");
+    private final SelenideElement burgerMenuButton = $(".header-style__underlay");
+    private final SelenideElement onlinerLogo = $(".b-top-logo");
+    private final SelenideElement burgerMenu = $(".header-style__navigation");
     private final SelenideElement catalog = $(By.xpath("(//span[@class='header-style__sign'])[2]"));
 
-    @Step("Open page main page url:")
+    @Step("Open Onliner main page")
     public OnlinerMainPage open(){
         LocalMobileDriver.getDriver().get(JsonConfigurator.AppSettings.appConfig.baseUrl);
         checkPageIsOpened();
@@ -37,19 +38,19 @@ public class OnlinerMainPage extends BasePage {
 
     @Override
     protected SelenideElement getPageIdentifier() {
-        return newsLayer;
+        return onlinerLogo.shouldBe(enabled, waitTimeout);
     }
 
     @Step("Click cart icon")
     public OnlinerCartPage clickCartIcon(){
-        cartIcon.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
+        cartIcon.shouldBe(Condition.enabled, waitTimeout).click();
 
         return new OnlinerCartPage();
     }
 
     @Step("Click search field")
     public OnlinerMainPage clickSearchField(){
-        searchField.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
+        searchField.shouldBe(Condition.enabled, waitTimeout).click();
 
         return this;
     }
@@ -57,7 +58,7 @@ public class OnlinerMainPage extends BasePage {
     @Step("Input {0} into field")
     public OnlinerMainPage inputTextSearchField(String productName){
         switchTo().frame(searchFrame);
-        searchFieldInFrame.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).sendKeys(productName);
+        searchFieldInFrame.shouldBe(Condition.enabled, waitTimeout).sendKeys(productName);
         LocalMobileDriver.getDriver().hideKeyboard();
 
         assertEquals(productName, searchFieldInFrame.getValue(), "The field value does not match the entered data!");
@@ -72,30 +73,37 @@ public class OnlinerMainPage extends BasePage {
         return this;
     }
 
+    @Step("Checking that burger menu is open")
+    public OnlinerMainPage checkBurgerMenuIsOpen(){
+        assertTrue(burgerMenu.shouldBe(Condition.enabled, waitTimeout).isDisplayed());
+
+        return this;
+    }
+
     @Step("Click VK icon")
     public VkOnlinerPage clickVkIcon(){
-        vkLink.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
+        vkLink.shouldBe(Condition.enabled, waitTimeout).click();
 
         return new VkOnlinerPage();
     }
 
     @Step("Click catalog")
     public OnlinerCatalogPage clickCatalog(){
-        catalog.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click(ClickOptions.usingJavaScript());
+        catalog.shouldBe(Condition.enabled, waitTimeout).click(ClickOptions.usingJavaScript());
 
         return new OnlinerCatalogPage();
     }
 
     @Step("Click on first product in the list")
     public OnlinerProductPage clickFirstProduct(){
-        firstProductTitle.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
+        firstProductTitle.shouldBe(Condition.enabled, waitTimeout).click();
 
          return new OnlinerProductPage();
     }
 
     @Step("Click burger menu")
     public OnlinerMainPage clickBurgerMenu(){
-        burgerMenu.shouldBe(Condition.enabled, Duration.ofSeconds(JsonConfigurator.AppSettings.appConfig.waitTimeout)).click();
+        burgerMenuButton.shouldBe(Condition.enabled, waitTimeout).click();
 
         return this;
     }

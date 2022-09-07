@@ -37,6 +37,7 @@ public class OtherTests extends BaseTest{
         onlinerMainPage
                 .open()
                 .clickBurgerMenu()
+                .checkBurgerMenuIsOpen()
                 .clickCatalog()
                 .checkIfCatalogPageIsOpen()
                 .clickOnlinerIcon()

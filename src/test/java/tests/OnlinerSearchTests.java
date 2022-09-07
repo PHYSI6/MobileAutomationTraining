@@ -6,10 +6,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.OnlinerMainPage;
 
+@DisplayName("Onliner search tests")
 public class OnlinerSearchTests extends BaseTest {
     OnlinerMainPage onlinerMainPage = new OnlinerMainPage();
 
-    @DisplayName("Search Test")
+    @DisplayName("Product search test")
     @Owner("Daniil Borisevich")
     @ParameterizedTest
     @ValueSource(strings = {"Iphone XR", "Macbook Pro"})
@@ -21,7 +22,7 @@ public class OnlinerSearchTests extends BaseTest {
                 .checkFirstProductTitle(productName);
     }
 
-    @DisplayName("Product navigation test")
+    @DisplayName("Product search and navigation test")
     @Owner("Daniil Borisevich")
     @ParameterizedTest
     @ValueSource(strings = {"Macbook Pro", "Apple Watch"})

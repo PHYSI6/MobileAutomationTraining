@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
@@ -11,7 +12,7 @@ public class OnlinerCartPage extends BasePage {
 
     @Override
     protected SelenideElement getPageIdentifier() {
-        return title;
+        return title.shouldBe(Condition.enabled, waitTimeout);
     }
 
     @Step("Check if page is opened")
