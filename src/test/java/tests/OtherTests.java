@@ -3,7 +3,7 @@ package tests;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pages.OnlinerMainPage;
+import pages.onliner.OnlinerMainPage;
 
 @DisplayName("Onliner other tests")
 public class OtherTests extends BaseTest{
@@ -27,7 +27,27 @@ public class OtherTests extends BaseTest{
         onlinerMainPage
                 .open()
                 .clickVkIcon()
-                .checkIfVkPageOpen();
+                .checkIfVkPageIsOpen();
+    }
+
+    @DisplayName("Facebook link test")
+    @Owner("Daniil Borisevich")
+    @Test
+    public void facebookLinkTest() {
+        onlinerMainPage
+                .open()
+                .clickFacebookIcon()
+                .checkIfFacebookPageIsOpen();
+    }
+
+    @DisplayName("Twitter link test")
+    @Owner("Daniil Borisevich")
+    @Test
+    public void twitterLinkTest() {
+        onlinerMainPage
+                .open()
+                .clickTwitterIcon()
+                .checkIfTwitterPageIsOpen();
     }
 
     @DisplayName("Onliner main icon test")

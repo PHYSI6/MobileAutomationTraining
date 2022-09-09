@@ -4,7 +4,7 @@ import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import pages.OnlinerMainPage;
+import pages.onliner.OnlinerMainPage;
 
 @DisplayName("Onliner search tests")
 public class OnlinerSearchTests extends BaseTest {

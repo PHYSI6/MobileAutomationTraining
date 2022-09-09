@@ -1,4 +1,4 @@
-package pages;
+package pages.onliner;
 
 import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.Condition;
@@ -7,6 +7,10 @@ import config.configurators.JsonConfigurator;
 import drivers.LocalMobileDriver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import pages.BasePage;
+import pages.socialNetworks.FacebookPage;
+import pages.socialNetworks.VkOnlinerPage;
+import pages.socialNetworks.TwitterPage;
 
 import java.time.Duration;
 
@@ -23,6 +27,8 @@ public class OnlinerMainPage extends BasePage {
     private final SelenideElement firstProductTitle = $(".product__title > a");
     private final SelenideElement cartIcon = $("#cart-mobile");
     private final SelenideElement vkLink = $(".footer-style__social-button_vk");
+    private final SelenideElement faceBookLink = $(".footer-style__social-button_fb");
+    private final SelenideElement twitterLink = $(".footer-style__social-button_tw");
     private final SelenideElement burgerMenuButton = $(".header-style__underlay");
     private final SelenideElement onlinerLogo = $(".b-top-logo");
     private final SelenideElement burgerMenu = $(".header-style__navigation");
@@ -85,6 +91,20 @@ public class OnlinerMainPage extends BasePage {
         vkLink.shouldBe(Condition.enabled, waitTimeout).click();
 
         return new VkOnlinerPage();
+    }
+
+    @Step("Click Facebook icon")
+    public FacebookPage clickFacebookIcon(){
+        faceBookLink.shouldBe(Condition.enabled, waitTimeout).click();
+
+        return new FacebookPage();
+    }
+
+    @Step("Click Twitter icon")
+    public TwitterPage clickTwitterIcon(){
+        twitterLink.shouldBe(Condition.enabled, waitTimeout).click();
+
+        return new TwitterPage();
     }
 
     @Step("Click catalog")
